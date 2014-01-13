@@ -244,7 +244,7 @@ class FlikArrayAdapter extends ArrayAdapter<Object> {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     		rowView = inflater.inflate(R.layout.flik_food_view, parent, false);
     		TextView textView = (TextView) rowView.findViewById(R.id.food_text_view);
-    		ImageButton comment = (ImageButton) rowView.findViewById(R.id.comment_button);
+    		
     		ImageButton good = (ImageButton) rowView.findViewById(R.id.good_button);
     		ImageButton bad = (ImageButton) rowView.findViewById(R.id.bad_button);
     		textView.setText(rowItem.getItemName());
@@ -253,16 +253,7 @@ class FlikArrayAdapter extends ArrayAdapter<Object> {
     		textView.setTextIsSelectable(false);
     		textView.getPaint().setAntiAlias(true);
     		rowView.getLayoutParams().height=36;
-    		comment.setOnClickListener(new OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    // TODO Auto-generated method stub
-                    Toast.makeText(context, "comment "+position, Toast.LENGTH_SHORT).show();
-                    currentlyExpandedItem = position;
-                    notifyDataSetChanged();
-                }
-            });
+    		
             good.setOnClickListener(new OnClickListener() {
 
                 @Override
@@ -287,13 +278,13 @@ class FlikArrayAdapter extends ArrayAdapter<Object> {
        		textView.setText(rowItem.getItemName());
        		textView.setTextSize(18);
        		textView.getPaint().setAntiAlias(true);
-       		ImageButton comment = (ImageButton) rowView.findViewById(R.id.comment_button);
+       		
     		ImageButton good = (ImageButton) rowView.findViewById(R.id.good_button);
     		ImageButton bad = (ImageButton) rowView.findViewById(R.id.bad_button);
     		textView.setTextIsSelectable(false);
     		//textView.setPadding(DPConverter.dpConvert(2),0,0,0);
     		textView.setTypeface(Typeface.DEFAULT_BOLD);
-    		comment.setVisibility(View.GONE);
+    		
     		good.setVisibility(View.GONE);
     		bad.setVisibility(View.GONE);
     	}
