@@ -48,8 +48,8 @@ public class FlikListFrag extends ListFragment implements LoaderCallbacks<Cursor
   public void onActivityCreated(Bundle savedInstanceState) {
 	  super.onActivityCreated(savedInstanceState);
 	  	Calendar c = Calendar.getInstance();
-	  	System.out.println("Current time => " + c.getTime());
-	  	SimpleDateFormat df = new SimpleDateFormat("yyy-MM-dd");
+	  	//System.out.println("Current time => " + c.getTime());
+	  	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 	  	String formattedDate = df.format(c.getTime());
 	  	date = formattedDate;
 	    //date = "2013-11-23";
@@ -67,14 +67,19 @@ public class FlikListFrag extends ListFragment implements LoaderCallbacks<Cursor
 		  JSONParser jParser = new JSONParser();   
 		  JSONObject json = jParser.getJSONFromUrl(READ_EVENTS_URL + "?type=Entree&date="+date);
 
-      
-          retrievedEntrees = json.getJSONArray("Meals");
-          Foods.add(new MenuItem(true, "Entrees"));
-          for (int i = 0; i < retrievedEntrees.length(); i++) {
-              JSONObject c = retrievedEntrees.getJSONObject(i);
-              System.out.println(c);
-              Foods.add(new MenuItem(false, c));
-          }
+		  if(json.isNull("Meals")){
+			  Foods.add(new MenuItem(true, "Entrees"));
+			  Foods.add(new MenuItem(false, "None Entered"));
+		  }else{
+	          retrievedEntrees = json.getJSONArray("Meals");
+	          Foods.add(new MenuItem(true, "Entrees"));
+	          for (int i = 0; i < retrievedEntrees.length(); i++) {
+	              JSONObject c = retrievedEntrees.getJSONObject(i);
+	              System.out.println(c);
+	              Foods.add(new MenuItem(false, c));
+	          }			  
+		  }
+
       } catch (JSONException e) {
           e.printStackTrace();
       }
@@ -83,14 +88,18 @@ public class FlikListFrag extends ListFragment implements LoaderCallbacks<Cursor
 		  JSONParser jParser = new JSONParser();   
 		  JSONObject json = jParser.getJSONFromUrl(READ_EVENTS_URL + "?type=Side&date="+date);
 
-      
-          retrievedSides = json.getJSONArray("Meals");
-          Foods.add(new MenuItem(true, "Sides"));
-          for (int i = 0; i < retrievedSides.length(); i++) {
-              JSONObject c = retrievedSides.getJSONObject(i);
-              System.out.println(c);
-              Foods.add(new MenuItem(false, c));
-          }
+		  if(json.isNull("Meals")){
+			  Foods.add(new MenuItem(true, "Sides"));
+			  Foods.add(new MenuItem(false, "None Entered"));
+		  }else{
+	          retrievedSides = json.getJSONArray("Meals");
+	          Foods.add(new MenuItem(true, "Sides"));
+	          for (int i = 0; i < retrievedSides.length(); i++) {
+	              JSONObject c = retrievedSides.getJSONObject(i);
+	              System.out.println(c);
+	              Foods.add(new MenuItem(false, c));
+	          }			  
+		  }
       	}catch (JSONException e) {
           e.printStackTrace();
       }	  
@@ -99,14 +108,18 @@ public class FlikListFrag extends ListFragment implements LoaderCallbacks<Cursor
 		  JSONParser jParser = new JSONParser();   
 		  JSONObject json = jParser.getJSONFromUrl(READ_EVENTS_URL + "?type=Flik+Live&date="+date);
 
-      
-          retrievedFlikLive = json.getJSONArray("Meals");
-          Foods.add(new MenuItem(true, "Flik Live"));
-          for (int i = 0; i < retrievedFlikLive.length(); i++) {
-              JSONObject c = retrievedFlikLive.getJSONObject(i);
-              System.out.println(c);
-              Foods.add(new MenuItem(false, c));
-          }
+		  if(json.isNull("Meals")){
+			  Foods.add(new MenuItem(true, "Flik Live"));
+			  Foods.add(new MenuItem(false, "None Entered"));
+		  }else{
+	          retrievedFlikLive = json.getJSONArray("Meals");
+	          Foods.add(new MenuItem(true, "Flik Live"));
+	          for (int i = 0; i < retrievedFlikLive.length(); i++) {
+	              JSONObject c = retrievedFlikLive.getJSONObject(i);
+	              System.out.println(c);
+	              Foods.add(new MenuItem(false, c));
+	          }			  
+		  }
       	}catch (JSONException e) {
           e.printStackTrace();
       }
@@ -115,14 +128,18 @@ public class FlikListFrag extends ListFragment implements LoaderCallbacks<Cursor
 		  JSONParser jParser = new JSONParser();   
 		  JSONObject json = jParser.getJSONFromUrl(READ_EVENTS_URL + "?type=Dessert&date="+date);
 
-      
-          retrievedDesserts = json.getJSONArray("Meals");
-          Foods.add(new MenuItem(true, "Desserts"));
-          for (int i = 0; i < retrievedDesserts.length(); i++) {
-              JSONObject c = retrievedDesserts.getJSONObject(i);
-              System.out.println(c);
-              Foods.add(new MenuItem(false, c));
-          }
+		  if(json.isNull("Meals")){
+			  Foods.add(new MenuItem(true, "Dessert"));
+			  Foods.add(new MenuItem(false, "None Entered"));
+		  }else{
+	          retrievedDesserts = json.getJSONArray("Meals");
+	          Foods.add(new MenuItem(true, "Desserts"));
+	          for (int i = 0; i < retrievedDesserts.length(); i++) {
+	              JSONObject c = retrievedDesserts.getJSONObject(i);
+	              System.out.println(c);
+	              Foods.add(new MenuItem(false, c));
+	          }			  
+		  }
       	}catch (JSONException e) {
           e.printStackTrace();
       }	  
@@ -131,19 +148,23 @@ public class FlikListFrag extends ListFragment implements LoaderCallbacks<Cursor
 		  JSONParser jParser = new JSONParser();   
 		  JSONObject json = jParser.getJSONFromUrl(READ_EVENTS_URL + "?type=Soup&date="+date);
 
-      
-          retrievedSoups = json.getJSONArray("Meals");
-          Foods.add(new MenuItem(true, "Soups"));
-          for (int i = 0; i < retrievedSoups.length(); i++) {
-              JSONObject c = retrievedSoups.getJSONObject(i);
-              System.out.println(c);
-              Foods.add(new MenuItem(false, c));
-          }
+
+		  if(json.isNull("Meals")){
+			  Foods.add(new MenuItem(true, "Soups"));
+			  Foods.add(new MenuItem(false, "None Entered"));
+		  }else{
+	          retrievedSoups = json.getJSONArray("Meals");
+	          Foods.add(new MenuItem(true, "Soups"));
+	          for (int i = 0; i < retrievedSoups.length(); i++) {
+	              JSONObject c = retrievedSoups.getJSONObject(i);
+	              System.out.println(c);
+	              Foods.add(new MenuItem(false, c));
+	          }			  
+		  }
       	}catch (JSONException e) {
           e.printStackTrace();
       }	  		  
   }
-  
   public class LoadMeals extends AsyncTask<Void, Void, Boolean> {
 
 		@Override
