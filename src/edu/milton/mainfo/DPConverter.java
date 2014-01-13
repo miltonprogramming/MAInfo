@@ -4,7 +4,7 @@ import android.content.Context;
 
 public abstract class DPConverter {
 	static Context context;
-	
+	//this is a committed source change
 	public static int dpConvert(int sp) {
 	float scale = context.getResources().getDisplayMetrics().density;
 	
