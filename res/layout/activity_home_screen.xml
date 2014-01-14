@@ -22,17 +22,6 @@
         android:text="@string/saa"
         android:textSize="30sp" />
 
-    <ImageButton
-        android:id="@+id/saa_button"
-        android:layout_width="75sp"
-        android:layout_height="75sp"
-        android:layout_alignTop="@+id/flik_button"
-        android:layout_marginLeft="39dp"
-        android:layout_toRightOf="@+id/textView3"
-        android:background="@color/background_transparent"
-        android:scaleType="fitStart"
-        android:src="@drawable/saaiconnew" />
-
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -56,12 +45,22 @@
         android:src="@drawable/flikicon" />
 
     <ImageButton
+        android:id="@+id/saa_button"
+        android:layout_width="75sp"
+        android:layout_height="75sp"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/flik_button"
+        android:layout_marginRight="28dp"
+        android:background="@color/background_transparent"
+        android:scaleType="fitStart"
+        android:src="@drawable/saaiconnew" />
+
+    <ImageButton
         android:id="@+id/settings_button"
         android:layout_width="75sp"
         android:layout_height="75sp"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:layout_marginLeft="28dp"
         android:background="@color/background_transparent"
         android:src="@drawable/gear" />
 
@@ -71,8 +70,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/settings_button"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginLeft="11dp"
+        android:gravity="center"
         android:text="@string/settings"
         android:textSize="30sp" />
 
