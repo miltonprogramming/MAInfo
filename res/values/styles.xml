@@ -13,16 +13,10 @@
     </style>
 
     <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
+    <style name="AppTheme" parent="android:Theme.Holo.Light">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
     
-    <style name="thin_ab" parent="android:Theme.Holo.Light">
-        <item name="android:actionBarStyle" >@style/thin_ab_style</item>
-    </style>
-
-    <style name="thin_ab_style" parent="android:Widget.Holo.ActionBar">
-        <item name="android:height">30dp</item>
-    </style>
+    
 
 </resources>

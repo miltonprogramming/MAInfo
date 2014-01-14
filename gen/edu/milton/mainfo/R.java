@@ -189,11 +189,8 @@ containing a value of this type.
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f070001;
-        public static final int Theme_Holo_Light=0x7f070006;
-        public static final int flik_menu_heading=0x7f070004;
-        public static final int flik_menu_item=0x7f070005;
-        public static final int thin_ab=0x7f070002;
-        public static final int thin_ab_style=0x7f070003;
+        public static final int flik_menu_heading=0x7f070002;
+        public static final int flik_menu_item=0x7f070003;
     }
     public static final class styleable {
         /** Attributes that can be used with a FlikFoodView.
