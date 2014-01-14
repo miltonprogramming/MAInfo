@@ -42,7 +42,7 @@ public class HomeScreen extends Activity {
 			}
 		});
         //TODO: this is a reference to settings class but we don't have a settings activity?
-        /*settings.setOnClickListener(new View.OnClickListener() {
+        settings.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -51,7 +51,7 @@ public class HomeScreen extends Activity {
 				startActivity(i);
 				
 			}
-		});*/
+		});
         
         
         
