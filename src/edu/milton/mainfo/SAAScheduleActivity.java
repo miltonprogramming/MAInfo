@@ -1,5 +1,7 @@
 package edu.milton.mainfo;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Locale;
 
 import android.os.Bundle;
@@ -107,13 +109,52 @@ public class SAAScheduleActivity extends FragmentActivity {
 		@Override
 		public CharSequence getPageTitle(int position) {
 			Locale l = Locale.getDefault();
+			Calendar c = Calendar.getInstance(l);
+		  	SimpleDateFormat dfCur = new SimpleDateFormat("EEE");
+		  	String curDate = dfCur.format(c.getTime());
+		  	
+		  	//adjust date to show friday of this weekend 
+			if (curDate.equals("Mon")) {
+				c.add(Calendar.DATE, 4);
+			}
+			else if (curDate.equals("Tue")) {
+				c.add(Calendar.DATE, 3);
+			}
+			else if (curDate.equals("Wed")) {
+				c.add(Calendar.DATE, 2);
+			}
+			else if (curDate.equals("Thu")) {
+				c.add(Calendar.DATE, 1);
+			}
+			else if (curDate.equals("Fri")) {
+				c.add(Calendar.DATE, 0);
+			}
+			else if (curDate.equals("Sat")){
+				c.add(Calendar.DATE, -1);
+			}			
+			else if (curDate.equals("Sun")) {
+				c.add(Calendar.DATE, -2);
+			}			
+
+			//format date title on section heading
+		  	SimpleDateFormat df = new SimpleDateFormat("EEE, MMM d");
+		  	String formattedDate[] = new String [getCount()];
+		  	//leftmost title
+		  	formattedDate[0] = df.format(c.getTime());
+		  	c.add(Calendar.DATE, 1);
+		  	//2nd title
+		  	formattedDate[1] = df.format(c.getTime());
+		  	c.add(Calendar.DATE, 1);
+		  	//3rd title
+		  	formattedDate[2] = df.format(c.getTime());
+		  	
 			switch (position) {
 			case 0:
-				return getString(R.string.title_section1).toUpperCase(l);
+				return formattedDate[0];
 			case 1:
-				return getString(R.string.title_section2).toUpperCase(l);
+				return formattedDate[1];
 			case 2:
-				return getString(R.string.title_section3).toUpperCase(l);
+				return formattedDate[2];
 			}
 			return null;
 		}
