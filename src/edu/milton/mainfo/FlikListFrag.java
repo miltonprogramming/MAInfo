@@ -255,12 +255,8 @@ class FlikArrayAdapter extends ArrayAdapter<Object> {
     	View rowView;
     
     	MenuItem rowItem = (MenuItem)Values.get(position);
-    	if (position == currentlyExpandedItem) {
-    		LayoutInflater inflater = (LayoutInflater) context
-                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        		rowView = inflater.inflate(R.layout.flik_food_alt_view, parent, false);
-    	}
-    	else if (!rowItem.isHeading()) {
+    	
+    	if (!rowItem.isHeading()) {
     		LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     		rowView = inflater.inflate(R.layout.flik_food_view, parent, false);

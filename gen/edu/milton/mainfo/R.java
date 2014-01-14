@@ -118,10 +118,9 @@ containing a value of this type.
         public static final int activity_welcome=0x7f030007;
         public static final int event_compact_view=0x7f030008;
         public static final int event_expanded_view=0x7f030009;
-        public static final int flik_food_alt_view=0x7f03000a;
-        public static final int flik_food_view=0x7f03000b;
-        public static final int fragment_tabs_test_dummy=0x7f03000c;
-        public static final int list_frag_layout=0x7f03000d;
+        public static final int flik_food_view=0x7f03000a;
+        public static final int fragment_tabs_test_dummy=0x7f03000b;
+        public static final int list_frag_layout=0x7f03000c;
     }
     public static final class menu {
         public static final int main=0x7f080000;
