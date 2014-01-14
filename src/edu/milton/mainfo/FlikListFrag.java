@@ -29,7 +29,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-@SuppressLint("SimpleDateFormat")
+@SuppressLint({ "SimpleDateFormat", "ValidFragment" })
 public class FlikListFrag extends ListFragment implements LoaderCallbacks<Cursor> {
 	
 	private ProgressDialog pDialog;
@@ -41,12 +41,19 @@ public class FlikListFrag extends ListFragment implements LoaderCallbacks<Cursor
 	private JSONArray retrievedSoups = null;
 	private ArrayList<MenuItem> Foods;	
 	private String date;
+	private int dateShift;
 	//private String type = "Entree";
 	
-  @Override
+  @SuppressLint("ValidFragment")
+  public FlikListFrag(int position) {
+		// TODO Auto-generated constructor stub
+	  dateShift = position;
+  }
+@Override
   public void onActivityCreated(Bundle savedInstanceState) {
 	  super.onActivityCreated(savedInstanceState);
 	  	Calendar c = Calendar.getInstance();
+	  	c.add(Calendar.DATE, dateShift);
 	  	//System.out.println("Current time => " + c.getTime());
 	  	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 	  	String formattedDate = df.format(c.getTime());
@@ -61,14 +68,14 @@ public class FlikListFrag extends ListFragment implements LoaderCallbacks<Cursor
 	  //get Entrees
 	  try {
 		  Foods = new ArrayList<MenuItem>();
-		  JSONParser jParser = new JSONParser();   
-		  JSONObject json = jParser.getJSONFromUrl(READ_EVENTS_URL + "?type=Entree&date="+date);
+		  JSONParser jParserEntrees = new JSONParser();   
+		  JSONObject jsonEntrees = jParserEntrees.getJSONFromUrl(READ_EVENTS_URL + "?type=Entree&date="+date);
 
-		  if(json.isNull("Meals")){
+		  if(jsonEntrees.isNull("Meals")){
 			  Foods.add(new MenuItem(true, "Entrees"));
 			  Foods.add(new MenuItem(false, "None Entered"));
 		  }else{
-	          retrievedEntrees = json.getJSONArray("Meals");
+	          retrievedEntrees = jsonEntrees.getJSONArray("Meals");
 	          Foods.add(new MenuItem(true, "Entrees"));
 	          for (int i = 0; i < retrievedEntrees.length(); i++) {
 	              JSONObject c = retrievedEntrees.getJSONObject(i);
@@ -82,14 +89,14 @@ public class FlikListFrag extends ListFragment implements LoaderCallbacks<Cursor
       }
 	  //get Sides
 	  try {
-		  JSONParser jParser = new JSONParser();   
-		  JSONObject json = jParser.getJSONFromUrl(READ_EVENTS_URL + "?type=Side&date="+date);
+		  JSONParser jParserSides = new JSONParser();   
+		  JSONObject jsonSides = jParserSides.getJSONFromUrl(READ_EVENTS_URL + "?type=Side&date="+date);
 
-		  if(json.isNull("Meals")){
+		  if(jsonSides.isNull("Meals")){
 			  Foods.add(new MenuItem(true, "Sides"));
 			  Foods.add(new MenuItem(false, "None Entered"));
 		  }else{
-	          retrievedSides = json.getJSONArray("Meals");
+	          retrievedSides = jsonSides.getJSONArray("Meals");
 	          Foods.add(new MenuItem(true, "Sides"));
 	          for (int i = 0; i < retrievedSides.length(); i++) {
 	              JSONObject c = retrievedSides.getJSONObject(i);
@@ -102,14 +109,14 @@ public class FlikListFrag extends ListFragment implements LoaderCallbacks<Cursor
       }	  
 	  //get Flik Live
 	  try {
-		  JSONParser jParser = new JSONParser();   
-		  JSONObject json = jParser.getJSONFromUrl(READ_EVENTS_URL + "?type=Flik+Live&date="+date);
+		  JSONParser jParserFlikLive = new JSONParser();   
+		  JSONObject jsonFlikLive = jParserFlikLive.getJSONFromUrl(READ_EVENTS_URL + "?type=Flik+Live&date="+date);
 
-		  if(json.isNull("Meals")){
+		  if(jsonFlikLive.isNull("Meals")){
 			  Foods.add(new MenuItem(true, "Flik Live"));
 			  Foods.add(new MenuItem(false, "None Entered"));
 		  }else{
-	          retrievedFlikLive = json.getJSONArray("Meals");
+	          retrievedFlikLive = jsonFlikLive.getJSONArray("Meals");
 	          Foods.add(new MenuItem(true, "Flik Live"));
 	          for (int i = 0; i < retrievedFlikLive.length(); i++) {
 	              JSONObject c = retrievedFlikLive.getJSONObject(i);
@@ -122,14 +129,14 @@ public class FlikListFrag extends ListFragment implements LoaderCallbacks<Cursor
       }
 	  //get Dessert
 	  try {
-		  JSONParser jParser = new JSONParser();   
-		  JSONObject json = jParser.getJSONFromUrl(READ_EVENTS_URL + "?type=Dessert&date="+date);
+		  JSONParser jParserDessert = new JSONParser();   
+		  JSONObject jsonDessert = jParserDessert.getJSONFromUrl(READ_EVENTS_URL + "?type=Dessert&date="+date);
 
-		  if(json.isNull("Meals")){
+		  if(jsonDessert.isNull("Meals")){
 			  Foods.add(new MenuItem(true, "Dessert"));
 			  Foods.add(new MenuItem(false, "None Entered"));
 		  }else{
-	          retrievedDesserts = json.getJSONArray("Meals");
+	          retrievedDesserts = jsonDessert.getJSONArray("Meals");
 	          Foods.add(new MenuItem(true, "Desserts"));
 	          for (int i = 0; i < retrievedDesserts.length(); i++) {
 	              JSONObject c = retrievedDesserts.getJSONObject(i);
@@ -142,15 +149,15 @@ public class FlikListFrag extends ListFragment implements LoaderCallbacks<Cursor
       }	  
 	  //get Soup
 	  try {
-		  JSONParser jParser = new JSONParser();   
-		  JSONObject json = jParser.getJSONFromUrl(READ_EVENTS_URL + "?type=Soup&date="+date);
+		  JSONParser jParserSoups = new JSONParser();   
+		  JSONObject jsonSoups = jParserSoups.getJSONFromUrl(READ_EVENTS_URL + "?type=Soup&date="+date);
 
 
-		  if(json.isNull("Meals")){
+		  if(jsonSoups.isNull("Meals")){
 			  Foods.add(new MenuItem(true, "Soups"));
 			  Foods.add(new MenuItem(false, "None Entered"));
 		  }else{
-	          retrievedSoups = json.getJSONArray("Meals");
+	          retrievedSoups = jsonSoups.getJSONArray("Meals");
 	          Foods.add(new MenuItem(true, "Soups"));
 	          for (int i = 0; i < retrievedSoups.length(); i++) {
 	              JSONObject c = retrievedSoups.getJSONObject(i);
