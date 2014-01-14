@@ -73,7 +73,7 @@ public class FlikMenuActivity extends FragmentActivity {
 			// getItem is called to instantiate the fragment for the given page.
 			// Return a DummySectionFragment (defined as a static inner class
 			// below) with the page number as its lone argument.
-			return new FlikListFrag();
+			return new FlikListFrag(position);
 		}
 
 		@Override

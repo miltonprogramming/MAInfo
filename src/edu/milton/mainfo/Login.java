@@ -45,10 +45,10 @@ public class Login extends Activity {
 		pass.setText(sp.getString("password", null));
 		String userString = sp.getString("username", null);
 		String passString = sp.getString("password", null);
-		/*if(!(userString.equals(null)) && !(passString.equals(null)))
+		if(passString != null)
 		{
 			new AttemptLogin().execute();
-		}*/
+		}
 		submit.setOnClickListener(new OnClickListener() {
 
             @Override
