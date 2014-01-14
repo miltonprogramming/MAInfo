@@ -6,7 +6,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".Welcome" >
+    tools:context=".Welcome"
+    android:label="" >
 
     <TextView
         android:id="@+id/textView1"
@@ -28,7 +29,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="62dp"
         android:ems="10"
-        android:hint="E-Mail"
+        android:hint="@string/email"
         android:inputType="textEmailAddress" >
 
         <requestFocus />
@@ -41,6 +42,15 @@
         android:layout_below="@+id/welcome_email"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="38dp"
-        android:text="Submit" />
+        android:text="@string/submit" />
+
+    <Button
+        android:id="@+id/welcome_login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/welcome_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="@string/goToLogin" />
 
 </RelativeLayout>

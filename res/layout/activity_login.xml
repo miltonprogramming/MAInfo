@@ -6,7 +6,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".Login" >
+    tools:context=".Login"
+    android:label="" >
 
     <EditText
         android:id="@+id/editText1"
@@ -34,7 +35,7 @@
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/welcome_login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/editText2"
@@ -43,12 +44,12 @@
         android:text="@string/sign_in" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/login_register_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/button1"
-        android:layout_below="@+id/button1"
-        android:layout_marginTop="22dp"
-        android:text="@string/password_reset" />
+        android:layout_alignRight="@+id/welcome_login_button"
+        android:layout_below="@+id/welcome_login_button"
+        android:layout_marginTop="17dp"
+        android:text="@string/go_to_register" />
 
 </RelativeLayout>

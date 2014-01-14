@@ -47,8 +47,8 @@ public class HomeScreen extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				//Intent i = new Intent(getApplicationContext(), SetingsActivity.class);
-				//startActivity(i);
+				Intent i = new Intent(getApplicationContext(), Settings.class);
+				startActivity(i);
 				
 			}
 		});
