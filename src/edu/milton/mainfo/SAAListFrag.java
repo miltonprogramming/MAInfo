@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.annotation.SuppressLint;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -32,13 +33,14 @@ import android.widget.TextView;
 public class SAAListFrag extends ListFragment implements LoaderCallbacks<Cursor> {
 
 	private ProgressDialog pDialog;
-	private static final String READ_EVENTS_URL = "http://saa.ma1geek.org/sqlretrieve.php";
+	private static final String READ_EVENTS_URL = "http://saa.ma1geek.org/getActivities.php";
 	private JSONArray retrievedEvents = null;
 	private ArrayList<SAAEvent> eventList;
 	private int dateShift;
 	private String date;
 	
-  public SAAListFrag(int position) {
+ @SuppressLint("ValidFragment")
+public SAAListFrag(int position) {
 		// TODO Auto-generated constructor stub
 	  dateShift = position;
 	}
@@ -104,7 +106,7 @@ public class SAAListFrag extends ListFragment implements LoaderCallbacks<Cursor>
 	  try {
 		  eventList = new ArrayList<SAAEvent>();
       JSONParser jParser = new JSONParser();   
-      JSONObject json = jParser.getJSONFromUrl(READ_EVENTS_URL);
+      JSONObject json = jParser.getJSONFromUrl(READ_EVENTS_URL+"?date="+date);
 
       
           retrievedEvents = json.getJSONArray("Activities");
