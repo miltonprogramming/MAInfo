@@ -3,8 +3,10 @@
     android:layout_width="wrap_content"
     android:layout_height="85dp"
     android:orientation="horizontal"
+    android:paddingBottom="15dp"
     android:paddingLeft="5dp"
-    android:paddingRight="5dp" >
+    android:paddingRight="5dp"
+    android:paddingTop="15dp" >
 
     <ImageView
         android:id="@+id/event_icon"
@@ -30,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/event_icon"
-        android:layout_alignLeft="@+id/date_location_textview"
+        android:layout_toRightOf="@id/event_icon"
         android:paddingLeft="10dp"
         android:text="Signup Required"
         android:textSize="14dp" />
@@ -39,8 +41,8 @@
         android:id="@+id/date_location_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/event_title_textview"
-        android:layout_alignTop="@+id/expand_button"
+        android:layout_below="@+id/event_title_textview"
+        android:layout_toRightOf="@id/event_icon"
         android:paddingLeft="10dp"
         android:text="10:00 pm - Ware Hall"
         android:textSize="14dp" />
@@ -49,7 +51,9 @@
         android:id="@+id/expand_button"
         android:layout_width="32dp"
         android:layout_height="32dp"
+        android:layout_alignBottom="@id/signup_textview"
         android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
         android:layout_centerVertical="true"
         android:background="@color/white"
         android:src="@drawable/ic_action_expand" />

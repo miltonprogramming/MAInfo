@@ -28,12 +28,7 @@
         android:layout_alignParentTop="true"
         android:src="@drawable/ic_launcher" />
 
-    <android.support.v7.widget.Space
-        android:id="@+id/space1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/event_icon"
-        android:layout_below="@+id/event_icon" />
+ 
 
     <TextView
         android:id="@+id/event_description_textview"
@@ -59,8 +54,8 @@
         android:id="@+id/date_location_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/collapse_button"
-        android:layout_toRightOf="@+id/event_icon"
+        android:layout_below="@id/event_title_textview"
+        android:layout_toRightOf="@id/event_icon"
         android:paddingLeft="10dp"
         android:text="10:00 pm - Ware Hall"
         android:textSize="14dp" />
@@ -70,6 +65,7 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_alignBottom="@+id/signup_textview"
+        android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/event_description_textview"
         android:background="@color/white"
         android:src="@drawable/ic_action_collapse" />
