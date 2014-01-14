@@ -97,7 +97,7 @@ public class SAAScheduleActivity extends FragmentActivity {
 			// Return a DummySectionFragment (defined as a static inner class
 			// below) with the page number as its lone argument.
 			Log.d("SAAScheduleActivity", "attempting to get saalistfragitem");
-			return new SAAListFrag();
+			return new SAAListFrag(position);
 		}
 
 		@Override

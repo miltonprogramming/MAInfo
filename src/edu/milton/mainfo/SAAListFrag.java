@@ -3,6 +3,8 @@ package edu.milton.mainfo;
 import java.text.FieldPosition;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Locale;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,10 +35,51 @@ public class SAAListFrag extends ListFragment implements LoaderCallbacks<Cursor>
 	private static final String READ_EVENTS_URL = "http://saa.ma1geek.org/sqlretrieve.php";
 	private JSONArray retrievedEvents = null;
 	private ArrayList<SAAEvent> eventList;
+	private int dateShift;
+	private String date;
 	
-  @Override
+  public SAAListFrag(int position) {
+		// TODO Auto-generated constructor stub
+	  dateShift = position;
+	}
+@Override
   public void onActivityCreated(Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
+    
+    //Getting correct date (i.e Friday of current week)
+	Locale l = Locale.getDefault();
+	Calendar c = Calendar.getInstance(l);
+  	SimpleDateFormat dfCur = new SimpleDateFormat("EEE");
+  	String curDate = dfCur.format(c.getTime());
+  	
+  	//adjust date to show friday of this weekend 
+	if (curDate.equals("Mon")) {
+		c.add(Calendar.DATE, 4);
+	}
+	else if (curDate.equals("Tue")) {
+		c.add(Calendar.DATE, 3);
+	}
+	else if (curDate.equals("Wed")) {
+		c.add(Calendar.DATE, 2);
+	}
+	else if (curDate.equals("Thu")) {
+		c.add(Calendar.DATE, 1);
+	}
+	else if (curDate.equals("Fri")) {
+		c.add(Calendar.DATE, 0);
+	}
+	else if (curDate.equals("Sat")){
+		c.add(Calendar.DATE, -1);
+	}			
+	else if (curDate.equals("Sun")) {
+		c.add(Calendar.DATE, -2);
+	}  
+	
+  	c.add(Calendar.DATE, dateShift);
+  	SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+  	String formattedDate = df.format(c.getTime());
+  	date = formattedDate;
+    
     new LoadEvents().execute();
     Log.d("SAAListFrag","fragment created");
     
