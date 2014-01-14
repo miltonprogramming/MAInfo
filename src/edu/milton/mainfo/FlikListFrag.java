@@ -3,7 +3,7 @@ package edu.milton.mainfo;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-//this is a change
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
