@@ -1,6 +1,5 @@
 package edu.milton.mainfo;
 
-import edu.milton.mainfo.Welcome.Register;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;

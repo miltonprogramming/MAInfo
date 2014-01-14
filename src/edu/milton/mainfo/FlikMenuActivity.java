@@ -2,8 +2,7 @@ package edu.milton.mainfo;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
-
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -17,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+@SuppressLint("SimpleDateFormat")
 public class FlikMenuActivity extends FragmentActivity {
 
 	/**
@@ -84,7 +84,6 @@ public class FlikMenuActivity extends FragmentActivity {
 
 		@Override
 		public CharSequence getPageTitle(int position) {
-			Locale l = Locale.getDefault();
 			Calendar c = Calendar.getInstance();
 		  	SimpleDateFormat df = new SimpleDateFormat("EEE, MMM d");
 		  	String formattedDate[] = new String [getCount()];

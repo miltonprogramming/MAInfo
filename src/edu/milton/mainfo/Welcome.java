@@ -3,10 +3,7 @@ package edu.milton.mainfo;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -35,7 +32,6 @@ public class Welcome extends FragmentActivity implements ExistingAccountDialogFr
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_welcome);
 		setTitle("Welcome!");
-		JSONParser jParser = new JSONParser();
 		jsonParser = new JSONParser();
 		SharedPreferences sp = getSharedPreferences("login",0);
 		edit = sp.edit();

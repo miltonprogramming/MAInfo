@@ -37,7 +37,6 @@ public class SAAListFrag extends ListFragment implements LoaderCallbacks<Cursor>
   @Override
   public void onActivityCreated(Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
-    Context context = getActivity();  
     new LoadEvents().execute();
     Log.d("SAAListFrag","fragment created");
     
@@ -174,7 +173,8 @@ class SAAArrayAdapter extends ArrayAdapter<Object> {
         		eventDescriptionTextView.setText(rowItem.getEventDescription());
         		String eventStartTime = timeOutputter.format(rowItem.getEventBeginTime(), new StringBuffer(), new FieldPosition(0)).toString();
         		dateLocationTextView.setText(eventStartTime + " location placeholder");
-        		ImageView eventIconImageView = (ImageView) rowView.findViewById(R.id.event_icon); //this is temporary until we have support for icons for individual events
+        		@SuppressWarnings("unused")
+				ImageView eventIconImageView = (ImageView) rowView.findViewById(R.id.event_icon); //this is temporary until we have support for icons for individual events
         		eventTitleTextView.setText(rowItem.getEventName());
         		
         		//textView.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -204,7 +204,8 @@ class SAAArrayAdapter extends ArrayAdapter<Object> {
     		} else {
     			signUpTextView.setText("");
     		}
-    		ImageView eventIconImageView = (ImageView) rowView.findViewById(R.id.event_icon); //this is temporary until we have support for icons for individual events
+    		@SuppressWarnings("unused")
+			ImageView eventIconImageView = (ImageView) rowView.findViewById(R.id.event_icon); //this is temporary until we have support for icons for individual events
     		eventTitleTextView.setText(rowItem.getEventName());
     		
     		//textView.setGravity(Gravity.CENTER_HORIZONTAL);

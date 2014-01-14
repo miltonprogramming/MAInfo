@@ -3,16 +3,14 @@ package edu.milton.mainfo;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import edu.milton.mainfo.SAAListFrag.LoadEvents;
-
-import android.app.ProgressDialog;
+import android.annotation.SuppressLint;
 import android.app.LoaderManager.LoaderCallbacks;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Loader;
 import android.database.Cursor;
@@ -31,6 +29,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+@SuppressLint("SimpleDateFormat")
 public class FlikListFrag extends ListFragment implements LoaderCallbacks<Cursor> {
 	
 	private ProgressDialog pDialog;
@@ -42,7 +41,7 @@ public class FlikListFrag extends ListFragment implements LoaderCallbacks<Cursor
 	private JSONArray retrievedSoups = null;
 	private ArrayList<MenuItem> Foods;	
 	private String date;
-	private String type = "Entree";
+	//private String type = "Entree";
 	
   @Override
   public void onActivityCreated(Bundle savedInstanceState) {
@@ -54,8 +53,6 @@ public class FlikListFrag extends ListFragment implements LoaderCallbacks<Cursor
 	  	date = formattedDate;
 	    //date = "2013-11-23";
 	    //use to demonstrate if there are no items for current date
-	    
-	    Context context = getActivity();  
 	    new LoadMeals().execute();
 	    Log.d("FlikListFrag","fragment created");	  
   }
