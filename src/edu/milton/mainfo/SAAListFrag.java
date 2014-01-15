@@ -217,7 +217,7 @@ class SAAArrayAdapter extends ArrayAdapter<Object> {
         		TextView eventDescriptionTextView = (TextView) rowView.findViewById(R.id.event_description_textview);
         		eventDescriptionTextView.setText(rowItem.getEventDescription());
         		String eventStartTime = timeOutputter.format(rowItem.getEventBeginTime(), new StringBuffer(), new FieldPosition(0)).toString();
-        		dateLocationTextView.setText(eventStartTime + " location placeholder");
+        		dateLocationTextView.setText(eventStartTime + " - " + rowItem.getEventLocation());
         		@SuppressWarnings("unused")
 				ImageView eventIconImageView = (ImageView) rowView.findViewById(R.id.event_icon); //this is temporary until we have support for icons for individual events
         		eventTitleTextView.setText(rowItem.getEventName());
