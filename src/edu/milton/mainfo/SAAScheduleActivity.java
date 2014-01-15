@@ -41,7 +41,6 @@ public class SAAScheduleActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tabs_test);
-		
 
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the app.
@@ -53,32 +52,34 @@ public class SAAScheduleActivity extends FragmentActivity {
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 		android.app.ActionBar actionBar = getActionBar();
 		actionBar.setSubtitle("");
-		actionBar.setTitle(""); 
+		actionBar.setTitle("");
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		//super.onCreateOptionsMenu(menu);
-		Log.d("Action Bar","action bar being deployed");
+		// super.onCreateOptionsMenu(menu);
+		Log.d("Action Bar", "action bar being deployed");
 		// Inflate the menu; this adds items to the action bar if it is present.
-		//getMenuInflater().inflate(R.menu.main, menu);
+		// getMenuInflater().inflate(R.menu.main, menu);
 		getMenuInflater().inflate(R.menu.main_activity_actions, menu);
 		return true;
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    // Handle presses on the action bar items
-	    switch (item.getItemId()) {
-	        case R.id.action_settings:
-	        	Toast.makeText(this, "Settings Button Pressed", Toast.LENGTH_SHORT).show();
-	            return true;
-	        case R.id.action_back:
-	        	Toast.makeText(this, "Back Button Pressed", Toast.LENGTH_SHORT).show();
-	            return true;
-	        default:
-	            return super.onOptionsItemSelected(item);
-	    }
+		// Handle presses on the action bar items
+		switch (item.getItemId()) {
+		case R.id.action_settings:
+			Toast.makeText(this, "Settings Button Pressed", Toast.LENGTH_SHORT)
+					.show();
+			return true;
+		case R.id.action_back:
+			Toast.makeText(this, "Back Button Pressed", Toast.LENGTH_SHORT)
+					.show();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
 
 	/**
@@ -110,44 +111,38 @@ public class SAAScheduleActivity extends FragmentActivity {
 		public CharSequence getPageTitle(int position) {
 			Locale l = Locale.getDefault();
 			Calendar c = Calendar.getInstance(l);
-		  	SimpleDateFormat dfCur = new SimpleDateFormat("EEE");
-		  	String curDate = dfCur.format(c.getTime());
-		  	
-		  	//adjust date to show friday of this weekend 
+			SimpleDateFormat dfCur = new SimpleDateFormat("EEE");
+			String curDate = dfCur.format(c.getTime());
+
+			// adjust date to show friday of this weekend
 			if (curDate.equals("Mon")) {
 				c.add(Calendar.DATE, 4);
-			}
-			else if (curDate.equals("Tue")) {
+			} else if (curDate.equals("Tue")) {
 				c.add(Calendar.DATE, 3);
-			}
-			else if (curDate.equals("Wed")) {
+			} else if (curDate.equals("Wed")) {
 				c.add(Calendar.DATE, 2);
-			}
-			else if (curDate.equals("Thu")) {
+			} else if (curDate.equals("Thu")) {
 				c.add(Calendar.DATE, 1);
-			}
-			else if (curDate.equals("Fri")) {
+			} else if (curDate.equals("Fri")) {
 				c.add(Calendar.DATE, 0);
-			}
-			else if (curDate.equals("Sat")){
+			} else if (curDate.equals("Sat")) {
 				c.add(Calendar.DATE, -1);
-			}			
-			else if (curDate.equals("Sun")) {
+			} else if (curDate.equals("Sun")) {
 				c.add(Calendar.DATE, -2);
-			}			
+			}
 
-			//format date title on section heading
-		  	SimpleDateFormat df = new SimpleDateFormat("EEE, MMM d");
-		  	String formattedDate[] = new String [getCount()];
-		  	//leftmost title
-		  	formattedDate[0] = df.format(c.getTime());
-		  	c.add(Calendar.DATE, 1);
-		  	//2nd title
-		  	formattedDate[1] = df.format(c.getTime());
-		  	c.add(Calendar.DATE, 1);
-		  	//3rd title
-		  	formattedDate[2] = df.format(c.getTime());
-		  	
+			// format date title on section heading
+			SimpleDateFormat df = new SimpleDateFormat("EEE, MMM d");
+			String formattedDate[] = new String[getCount()];
+			// leftmost title
+			formattedDate[0] = df.format(c.getTime());
+			c.add(Calendar.DATE, 1);
+			// 2nd title
+			formattedDate[1] = df.format(c.getTime());
+			c.add(Calendar.DATE, 1);
+			// 3rd title
+			formattedDate[2] = df.format(c.getTime());
+
 			switch (position) {
 			case 0:
 				return formattedDate[0];
@@ -184,7 +179,8 @@ public class SAAScheduleActivity extends FragmentActivity {
 					.findViewById(R.id.section_label);
 			dummyTextView.setText(Integer.toString(getArguments().getInt(
 					ARG_SECTION_NUMBER)));
-			TextView secTextView = (TextView) rootView.findViewById(R.id.seclabel2);
+			TextView secTextView = (TextView) rootView
+					.findViewById(R.id.seclabel2);
 			secTextView.setText(ARG_SECTION_TEXT);
 			return rootView;
 		}
