@@ -81,7 +81,7 @@ public class FlikMenuActivity extends FragmentActivity {
 		@Override
 		public int getCount() {
 			// Show 3 total pages.
-			return 3;
+			return 5;
 		}
 
 		@Override
@@ -95,6 +95,10 @@ public class FlikMenuActivity extends FragmentActivity {
 		  	formattedDate[1] = df.format(c.getTime());
 		  	c.add(Calendar.DATE, 1);
 		  	formattedDate[2] = df.format(c.getTime());
+		  	c.add(Calendar.DATE, 1);
+		  	formattedDate[3] = df.format(c.getTime());
+		  	c.add(Calendar.DATE, 1);
+		  	formattedDate[4] = df.format(c.getTime());
 		  	
 			switch (position) {
 			case 0:
@@ -103,6 +107,10 @@ public class FlikMenuActivity extends FragmentActivity {
 				return formattedDate[1];
 			case 2:
 				return formattedDate[2];
+			case 3:
+				return formattedDate[3];			
+			case 4:
+				return formattedDate[4];				
 			}
 			return null;
 		}
