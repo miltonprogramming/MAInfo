@@ -40,9 +40,9 @@
         android:layout_alignLeft="@+id/settings_button"
         android:layout_alignParentTop="true"
         android:layout_marginTop="38dp"
-        android:background="@color/background_transparent"
+        android:background="@drawable/flik_button_custom"
         android:scaleType="fitStart"
-        android:src="@drawable/flikicon" />
+        android:src="@drawable/flik_button_custom" />
 
     <ImageButton
         android:id="@+id/saa_button"
@@ -51,9 +51,9 @@
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/flik_button"
         android:layout_marginRight="28dp"
-        android:background="@color/background_transparent"
+        android:background="@drawable/saa_button_custom"
         android:scaleType="fitStart"
-        android:src="@drawable/saaiconnew" />
+        android:src="@drawable/saa_button_custom" />
 
     <ImageButton
         android:id="@+id/settings_button"

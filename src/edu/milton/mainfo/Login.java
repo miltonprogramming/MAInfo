@@ -108,6 +108,7 @@ public class Login extends Activity {
                		edit.putString("username", username);
                		edit.putString("password", password);
                		edit.commit();
+               		//pDialog.dismiss();
                		Intent i = new Intent(Login.this, HomeScreen.class);
 					finish();
 					startActivity(i);
