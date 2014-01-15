@@ -44,8 +44,8 @@
         android:id="@+id/signup_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/event_description_textview"
         android:layout_alignLeft="@+id/event_title_textview"
+        android:layout_below="@id/date_location_textview"
         android:paddingLeft="10dp"
         android:text="Signup Required"
         android:textSize="14dp" />
