@@ -37,6 +37,9 @@
         android:text="@string/long_placeholder"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="12sp"
-        android:typeface="normal" />
+        android:typeface="normal"
+        android:ellipsize="marquee"      
+ 		android:marqueeRepeatLimit="marquee_forever"
+ 		android:scrollHorizontally="true" />
 
 </RelativeLayout>
