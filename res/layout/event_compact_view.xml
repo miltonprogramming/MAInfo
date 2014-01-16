@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="85dp"
+    android:layout_height="100dp"
     android:orientation="horizontal"
     android:paddingBottom="15dp"
     android:paddingLeft="5dp"
@@ -31,7 +31,7 @@
         android:id="@+id/signup_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/date_location_textview"
+        android:layout_below="@+id/date_location_textview"
         android:layout_centerInParent="false"
         android:layout_toRightOf="@id/event_icon"
         android:paddingLeft="10dp"
