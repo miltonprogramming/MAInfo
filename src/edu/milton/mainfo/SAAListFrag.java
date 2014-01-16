@@ -107,13 +107,14 @@ public class SAAListFrag extends ListFragment implements
 			JSONObject json = jParser.getJSONFromUrl(READ_EVENTS_URL + "?date="
 					+ date);
 
-			if (!json.getJSONArray("Activities").equals(null)) {
+			//if (json.isNull("Activities")) 
+			//{
 				retrievedEvents = json.getJSONArray("Activities");
 				for (int i = 0; i < retrievedEvents.length(); i++) {
 					JSONObject c = retrievedEvents.getJSONObject(i);
 					eventList.add(new SAAEvent(c));
 				}
-			}
+			//}
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
