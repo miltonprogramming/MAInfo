@@ -104,15 +104,30 @@ public class SAAListFrag extends ListFragment implements
 		try {
 			eventList = new ArrayList<SAAEvent>();
 			JSONParser jParser = new JSONParser();
-			JSONObject json = jParser.getJSONFromUrl(READ_EVENTS_URL + "?date="
-					+ date);
+			JSONObject json = null;
+			if(!jParser.getJSONFromUrl(READ_EVENTS_URL + "?date="
+					+ date).equals(null)){
+				json = jParser.getJSONFromUrl(READ_EVENTS_URL + "?date="
+					+ date);				
+			}
+			
 
 			//if (json.isNull("Activities")) 
 			//{
 				retrievedEvents = json.getJSONArray("Activities");
 				for (int i = 0; i < retrievedEvents.length(); i++) {
-					JSONObject c = retrievedEvents.getJSONObject(i);
-					eventList.add(new SAAEvent(c));
+					JSONObject c = new JSONObject();
+					if(retrievedEvents.getJSONObject(i).equals(null)){
+						c = new JSONObject();
+						Log.d("check null here","null = true");
+					}
+					else{
+						c = retrievedEvents.getJSONObject(i);
+						
+					}
+					if(!c.equals(null)){
+						eventList.add(new SAAEvent(c));						
+					}
 				}
 			//}
 		} catch (JSONException e) {

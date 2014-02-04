@@ -71,11 +71,11 @@ public class FlikListFrag extends ListFragment implements LoaderCallbacks<Cursor
 		  JSONParser jParserEntrees = new JSONParser();   
 		  JSONObject jsonEntrees = jParserEntrees.getJSONFromUrl(READ_EVENTS_URL + "?type=Entree&date="+date);
 
-		  if(jsonEntrees.isNull("Entree")){
+		  if(jsonEntrees.isNull("Meals")){
 			  Foods.add(new MenuItem(true, "Entrees"));
 			  Foods.add(new MenuItem(false, "None Entered"));
 		  }else{
-	          retrievedEntrees = jsonEntrees.getJSONArray("Entree");
+	          retrievedEntrees = jsonEntrees.getJSONArray("Meals");
 	          Foods.add(new MenuItem(true, "Entrees"));
 	          for (int i = 0; i < retrievedEntrees.length(); i++) {
 	              JSONObject c = retrievedEntrees.getJSONObject(i);
@@ -92,11 +92,11 @@ public class FlikListFrag extends ListFragment implements LoaderCallbacks<Cursor
 		  JSONParser jParserSides = new JSONParser();   
 		  JSONObject jsonSides = jParserSides.getJSONFromUrl(READ_EVENTS_URL + "?type=Side&date="+date);
 
-		  if(jsonSides.isNull("Side")){
+		  if(jsonSides.isNull("Meals")){
 			  Foods.add(new MenuItem(true, "Sides"));
 			  Foods.add(new MenuItem(false, "None Entered"));
 		  }else{
-	          retrievedSides = jsonSides.getJSONArray("Side");
+	          retrievedSides = jsonSides.getJSONArray("Meals");
 	          Foods.add(new MenuItem(true, "Sides"));
 	          for (int i = 0; i < retrievedSides.length(); i++) {
 	              JSONObject c = retrievedSides.getJSONObject(i);
@@ -112,11 +112,11 @@ public class FlikListFrag extends ListFragment implements LoaderCallbacks<Cursor
 		  JSONParser jParserFlikLive = new JSONParser();   
 		  JSONObject jsonFlikLive = jParserFlikLive.getJSONFromUrl(READ_EVENTS_URL + "?type=Flik+Live&date="+date);
 
-		  if(jsonFlikLive.isNull("Flik Live")){
+		  if(jsonFlikLive.isNull("Meals")){
 			  Foods.add(new MenuItem(true, "Flik Live"));
 			  Foods.add(new MenuItem(false, "None Entered"));
 		  }else{
-	          retrievedFlikLive = jsonFlikLive.getJSONArray("Flik Live");
+	          retrievedFlikLive = jsonFlikLive.getJSONArray("Meals");
 	          Foods.add(new MenuItem(true, "Flik Live"));
 	          for (int i = 0; i < retrievedFlikLive.length(); i++) {
 	              JSONObject c = retrievedFlikLive.getJSONObject(i);
@@ -132,11 +132,11 @@ public class FlikListFrag extends ListFragment implements LoaderCallbacks<Cursor
 		  JSONParser jParserDessert = new JSONParser();   
 		  JSONObject jsonDessert = jParserDessert.getJSONFromUrl(READ_EVENTS_URL + "?type=Dessert&date="+date);
 
-		  if(jsonDessert.isNull("Dessert")){
+		  if(jsonDessert.isNull("Meals")){
 			  Foods.add(new MenuItem(true, "Dessert"));
 			  Foods.add(new MenuItem(false, "None Entered"));
 		  }else{
-	          retrievedDesserts = jsonDessert.getJSONArray("Dessert");
+	          retrievedDesserts = jsonDessert.getJSONArray("Meals");
 	          Foods.add(new MenuItem(true, "Desserts"));
 	          for (int i = 0; i < retrievedDesserts.length(); i++) {
 	              JSONObject c = retrievedDesserts.getJSONObject(i);
@@ -153,11 +153,11 @@ public class FlikListFrag extends ListFragment implements LoaderCallbacks<Cursor
 		  JSONObject jsonSoups = jParserSoups.getJSONFromUrl(READ_EVENTS_URL + "?type=Soup&date="+date);
 
 
-		  if(jsonSoups.isNull("Soup")){
+		  if(jsonSoups.isNull("Meals")){
 			  Foods.add(new MenuItem(true, "Soups"));
 			  Foods.add(new MenuItem(false, "None Entered"));
 		  }else{
-	          retrievedSoups = jsonSoups.getJSONArray("Soup");
+	          retrievedSoups = jsonSoups.getJSONArray("Meals");
 	          Foods.add(new MenuItem(true, "Soups"));
 	          for (int i = 0; i < retrievedSoups.length(); i++) {
 	              JSONObject c = retrievedSoups.getJSONObject(i);
