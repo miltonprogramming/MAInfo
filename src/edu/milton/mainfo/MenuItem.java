@@ -8,7 +8,7 @@ import android.annotation.SuppressLint;
 
 @SuppressLint("SimpleDateFormat")
 public class MenuItem {
-	
+
 	private int numericalID;
 	private Date itemDate;
 	private String itemName;
@@ -21,19 +21,19 @@ public class MenuItem {
 	public MenuItem(boolean heading, String itemName) {
 		setHeading(heading);
 		this.setItemName(itemName);
-	}	
-	
+	}
 
 	public MenuItem(boolean heading, JSONObject jobj) {
 		setHeading(heading);
 		dateParser = new SimpleDateFormat("yyyy-MM-dd");
 		try {
-			if (!jobj.isNull("id")) {		
-				setNumericalID(Integer.parseInt(jobj.getString("id")));		
+			if (!jobj.isNull("id")) {
+				setNumericalID(Integer.parseInt(jobj.getString("id")));
 			}
-			/*if (!jobj.isNull("votes")) {		
-				votes = Integer.parseInt(jobj.getString("votes"));		
-			}*/
+			/*
+			 * if (!jobj.isNull("votes")) { votes =
+			 * Integer.parseInt(jobj.getString("votes")); }
+			 */
 			if (!jobj.isNull("mealName")) {
 				setItemName(jobj.getString("mealName"));
 			}
@@ -46,15 +46,16 @@ public class MenuItem {
 			if (!jobj.isNull("mealTime")) {
 				setItemTime(jobj.getString("mealTime"));
 			}
-		}
-		catch (JSONException e) {
+			if (!jobj.isNull("likes")) {
+				setVotes(Integer.parseInt(jobj.getString("votes")));
+
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-	
+
 	}
 
 	public int getNumericalID() {
@@ -65,64 +66,55 @@ public class MenuItem {
 		this.numericalID = numericalID;
 	}
 
-
 	public Date getItemDate() {
 		return itemDate;
 	}
-
+	
+	public String getDateString(){
+		return(dateParser.format(itemDate));
+	}
 
 	public void setItemDate(Date itemDate) {
 		this.itemDate = itemDate;
 	}
 
-
 	public String getItemName() {
 		return itemName;
 	}
-
 
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
 
-
 	public String getItemClass() {
 		return itemClass;
 	}
-
 
 	public void setItemClass(String itemClass) {
 		this.itemClass = itemClass;
 	}
 
-
 	public String getItemTime() {
 		return itemTime;
 	}
-
 
 	public void setItemTime(String itemTime) {
 		this.itemTime = itemTime;
 	}
 
-
 	public boolean isHeading() {
 		return isHeading;
 	}
-
 
 	public void setHeading(boolean isHeading) {
 		this.isHeading = isHeading;
 	}
 
-
 	public int getVotes() {
 		return votes;
 	}
-
 
 	public void setVotes(int votes) {
 		this.votes = votes;
 	}
 }
-

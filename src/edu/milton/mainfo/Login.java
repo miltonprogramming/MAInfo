@@ -110,6 +110,7 @@ public class Login extends Activity {
                		edit.commit();
                		//pDialog.dismiss();
                		Intent i = new Intent(Login.this, HomeScreen.class);
+               		i.putExtra("email", username);
 					finish();
 					startActivity(i);
 					return json.getString("message");

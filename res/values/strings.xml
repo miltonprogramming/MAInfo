@@ -7,7 +7,7 @@
     <string name="mainScreenTitle">Milton Academy</string>
     <string name="action_back">Back</string>
     <string name="blank_string"></string>
-    <string name="title_activity_tabs_test">TabsTest</string>
+    <string name="title_activity_tabs_test">Flik Menu</string>
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
@@ -18,7 +18,7 @@
     <string name="thumbs_down">Thumbs Down!</string>
     <string name="desc_comment">Leave a comment...</string>
     <string name="altview">This is simply an alternative view</string>
-    <string name="title_activity_saaschedule">SAAScheduleActivity</string>
+    <string name="title_activity_saaschedule">SAA Schedule</string>
     <string name="event_description_placeholder">This is an event discription, and as such, is likely to be quite long. Wow! Such longness! So many multiple word sentences, likely requiring smooth handling of line breaking and content wrapping and all the other things that android will do for us, right?</string>
 	
     <string name="flik">FLIK</string>

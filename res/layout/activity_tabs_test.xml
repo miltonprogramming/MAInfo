@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FlikMenuActivity" 
-    android:title="">
+    android:title="@string/title_activity_tabs_test">
 
     <!--
     This title strip will display the currently visible page title, as well as the page

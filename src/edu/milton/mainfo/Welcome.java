@@ -71,7 +71,10 @@ public class Welcome extends FragmentActivity implements ExistingAccountDialogFr
 		protected String doInBackground(String... args) {
 
 			final JSONParser jParser = new JSONParser();
-			final String emailString = email.getText().toString();
+			String emailString = email.getText().toString();
+			if(emailString.equals(null)){
+				emailString = "No Email Entered";
+			}
 			JSONObject json = jParser.getJSONFromUrl("http://www.ma1geek.org/app_users/register.php?n="+ emailString);
 
 			// when parsing JSON stuff, we should probably

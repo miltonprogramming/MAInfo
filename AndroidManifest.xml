@@ -27,7 +27,7 @@
         </activity>
         <activity
             android:name="edu.milton.mainfo.SAAScheduleActivity"
-            android:label="@string/title_activity_saaschedule" 
+            android:label="dicks manifest goods" 
             android:screenOrientation="sensorPortrait" >
         </activity>
         <activity

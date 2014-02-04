@@ -50,9 +50,7 @@ public class SAAScheduleActivity extends FragmentActivity {
 		// Set up the ViewPager with the sections adapter.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
-		android.app.ActionBar actionBar = getActionBar();
-		actionBar.setSubtitle("");
-		actionBar.setTitle("");
+		
 	}
 
 	@Override

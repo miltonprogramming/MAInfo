@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SAAScheduleActivity"
-    android:label="" >
+    android:label="dicks sporting goods" >
 
     <!--
     This title strip will display the currently visible page title, as well as the page
