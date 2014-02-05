@@ -56,7 +56,7 @@ public class SAAScheduleActivity extends FragmentActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// super.onCreateOptionsMenu(menu);
-		Log.d("Action Bar", "action bar being deployed");
+		//Log.d("Action Bar", "action bar being deployed");
 		// Inflate the menu; this adds items to the action bar if it is present.
 		// getMenuInflater().inflate(R.menu.main, menu);
 		getMenuInflater().inflate(R.menu.main_activity_actions, menu);
@@ -101,8 +101,8 @@ public class SAAScheduleActivity extends FragmentActivity {
 
 		@Override
 		public int getCount() {
-			// Show 3 total pages.
-			return 3;
+			// Show 4 total pages.
+			return 4;
 		}
 
 		@Override
@@ -114,19 +114,19 @@ public class SAAScheduleActivity extends FragmentActivity {
 
 			// adjust date to show friday of this weekend
 			if (curDate.equals("Mon")) {
-				c.add(Calendar.DATE, 4);
-			} else if (curDate.equals("Tue")) {
 				c.add(Calendar.DATE, 3);
-			} else if (curDate.equals("Wed")) {
+			} else if (curDate.equals("Tue")) {
 				c.add(Calendar.DATE, 2);
-			} else if (curDate.equals("Thu")) {
+			} else if (curDate.equals("Wed")) {
 				c.add(Calendar.DATE, 1);
-			} else if (curDate.equals("Fri")) {
+			} else if (curDate.equals("Thu")) {
 				c.add(Calendar.DATE, 0);
-			} else if (curDate.equals("Sat")) {
+			} else if (curDate.equals("Fri")) {
 				c.add(Calendar.DATE, -1);
-			} else if (curDate.equals("Sun")) {
+			} else if (curDate.equals("Sat")) {
 				c.add(Calendar.DATE, -2);
+			} else if (curDate.equals("Sun")) {
+				c.add(Calendar.DATE, -3);
 			}
 
 			// format date title on section heading
@@ -139,6 +139,9 @@ public class SAAScheduleActivity extends FragmentActivity {
 			formattedDate[1] = df.format(c.getTime());
 			c.add(Calendar.DATE, 1);
 			// 3rd title
+			formattedDate[1] = df.format(c.getTime());
+			c.add(Calendar.DATE, 1);
+			// 4th title
 			formattedDate[2] = df.format(c.getTime());
 
 			switch (position) {

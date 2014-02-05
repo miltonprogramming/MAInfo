@@ -52,8 +52,8 @@ public class FlikListFrag extends ListFragment implements
 	private JSONArray retrievedVotes = null;
 	private ArrayList<MenuItem> Foods;
 	private ArrayList<VoteObject> votes;
-	//private ArrayList<Integer> voteState;
-	//point -> x stores mealid, y stores vote
+	// private ArrayList<Integer> voteState;
+	// point -> x stores mealid, y stores vote
 	private ArrayList<Point> votesToSend;
 	private ArrayList<Point> votesToUpdate;
 	private HashMap<Integer, VoteObject> myvotes;
@@ -87,45 +87,38 @@ public class FlikListFrag extends ListFragment implements
 
 	public void updateJSONdata() {
 
+		Foods = new ArrayList<MenuItem>();
+		votes = new ArrayList<VoteObject>();
+		votesToSend = new ArrayList<Point>();
+		myvotes = new HashMap<Integer, VoteObject>();
+		votesToUpdate = new ArrayList<Point>();
+
 		// get Entrees
 		try {
-			Foods = new ArrayList<MenuItem>();
-			votes = new ArrayList<VoteObject>();
-			votesToSend = new ArrayList<Point>();
-			myvotes = new HashMap<Integer, VoteObject>();
-			votesToUpdate = new ArrayList<Point>();
 
 			JSONParser jParserEntrees = new JSONParser();
 			JSONObject jsonEntrees = jParserEntrees
 					.getJSONFromUrl(READ_EVENTS_URL + "?type=Entree&date="
 							+ date);
 
-			if (jsonEntrees.isNull("Entree")) {
-				Foods.add(new MenuItem(true, "Entree"));
-				Foods.add(new MenuItem(false, "None Entered"));
-			} else {
-				retrievedEntrees = jsonEntrees.getJSONArray("Entree");
-				Foods.add(new MenuItem(true, "Entrees"));
-				for (int i = 0; i < retrievedEntrees.length(); i++) {
-					JSONObject c = retrievedEntrees.getJSONObject(i);
-					// System.out.println(c);
-					Foods.add(new MenuItem(false, c));
-				}
+			retrievedEntrees = jsonEntrees.getJSONArray("Entree");
+			Foods.add(new MenuItem(true, "Entrees"));
+			for (int i = 0; i < retrievedEntrees.length(); i++) {
+				JSONObject c = retrievedEntrees.getJSONObject(i);
+				// System.out.println(c);
+				Foods.add(new MenuItem(false, c));
 			}
 
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+		
 		// get Sides
 		try {
 			JSONParser jParserSides = new JSONParser();
 			JSONObject jsonSides = jParserSides.getJSONFromUrl(READ_EVENTS_URL
 					+ "?type=Side&date=" + date);
 
-			if (jsonSides.isNull("Side")) {
-				Foods.add(new MenuItem(true, "Sides"));
-				Foods.add(new MenuItem(false, "None Entered"));
-			} else {
 				retrievedSides = jsonSides.getJSONArray("Side");
 				Foods.add(new MenuItem(true, "Sides"));
 				for (int i = 0; i < retrievedSides.length(); i++) {
@@ -133,7 +126,6 @@ public class FlikListFrag extends ListFragment implements
 					// System.out.println(c);
 					Foods.add(new MenuItem(false, c));
 				}
-			}
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -144,10 +136,7 @@ public class FlikListFrag extends ListFragment implements
 					.getJSONFromUrl(READ_EVENTS_URL + "?type=Flik+Live&date="
 							+ date);
 
-			if (jsonFlikLive.isNull("Flik Live")) {
-				Foods.add(new MenuItem(true, "Flik Live"));
-				Foods.add(new MenuItem(false, "None Entered"));
-			} else {
+
 				retrievedFlikLive = jsonFlikLive.getJSONArray("Flik Live");
 				Foods.add(new MenuItem(true, "Flik Live"));
 				for (int i = 0; i < retrievedFlikLive.length(); i++) {
@@ -155,7 +144,7 @@ public class FlikListFrag extends ListFragment implements
 					// System.out.println(c);
 					Foods.add(new MenuItem(false, c));
 				}
-			}
+
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -166,10 +155,7 @@ public class FlikListFrag extends ListFragment implements
 					.getJSONFromUrl(READ_EVENTS_URL + "?type=Dessert&date="
 							+ date);
 
-			if (jsonDessert.isNull("Dessert")) {
-				Foods.add(new MenuItem(true, "Dessert"));
-				Foods.add(new MenuItem(false, "None Entered"));
-			} else {
+
 				retrievedDesserts = jsonDessert.getJSONArray("Dessert");
 				Foods.add(new MenuItem(true, "Desserts"));
 				for (int i = 0; i < retrievedDesserts.length(); i++) {
@@ -177,7 +163,6 @@ public class FlikListFrag extends ListFragment implements
 					// System.out.println(c);
 					Foods.add(new MenuItem(false, c));
 				}
-			}
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -187,10 +172,7 @@ public class FlikListFrag extends ListFragment implements
 			JSONObject jsonSoups = jParserSoups.getJSONFromUrl(READ_EVENTS_URL
 					+ "?type=Soup&date=" + date);
 
-			if (jsonSoups.isNull("Soup")) {
-				Foods.add(new MenuItem(true, "Soups"));
-				Foods.add(new MenuItem(false, "None Entered"));
-			} else {
+
 				retrievedSoups = jsonSoups.getJSONArray("Soup");
 				Foods.add(new MenuItem(true, "Soups"));
 				for (int i = 0; i < retrievedSoups.length(); i++) {
@@ -198,7 +180,6 @@ public class FlikListFrag extends ListFragment implements
 					// System.out.println(c);
 					Foods.add(new MenuItem(false, c));
 				}
-			}
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -208,7 +189,7 @@ public class FlikListFrag extends ListFragment implements
 			JSONParser jParserVotes = new JSONParser();
 			JSONObject jsonVotes = jParserVotes.getJSONFromUrl(READ_VOTES_URL
 					+ "?date=" + date);
-			Log.d("test2", jsonVotes.toString());
+			//Log.d("test2", jsonVotes.toString());
 			retrievedVotes = jsonVotes.getJSONArray("Votes");
 			for (int i = 0; i < retrievedVotes.length(); i++) {
 				JSONObject j = retrievedVotes.getJSONObject(i);
@@ -299,35 +280,36 @@ public class FlikListFrag extends ListFragment implements
 		FlikArrayAdapter adapter = new FlikArrayAdapter(getActivity(), Foods);
 		setListAdapter(adapter);
 	}
-	
+
 	@Override
-	public void onPause(){
+	public void onPause() {
 		super.onPause();
 		new Vote().execute();
-		
-		
+
 	}
-	public void updateVotes(){
+
+	public void updateVotes() {
 		List<NameValuePair> send = new ArrayList<NameValuePair>();
 		List<NameValuePair> update = new ArrayList<NameValuePair>();
 		JSONParser parser = new JSONParser();
-		for(Point p:votesToSend){
-			send.add(new BasicNameValuePair("email",email));
-			send.add(new BasicNameValuePair("mealid",""+p.x));
-			send.add(new BasicNameValuePair("vote",""+p.y));
-			send.add(new BasicNameValuePair("date",date));
+		for (Point p : votesToSend) {
+			send.add(new BasicNameValuePair("email", email));
+			send.add(new BasicNameValuePair("mealid", "" + p.x));
+			send.add(new BasicNameValuePair("vote", "" + p.y));
+			send.add(new BasicNameValuePair("date", date));
 		}
-		for(Point p:votesToUpdate){
-			update.add(new BasicNameValuePair("email",email));
-			update.add(new BasicNameValuePair("mealid",""+p.x));
-			update.add(new BasicNameValuePair("vote",""+p.y));
-			update.add(new BasicNameValuePair("date",date));
+		for (Point p : votesToUpdate) {
+			update.add(new BasicNameValuePair("email", email));
+			update.add(new BasicNameValuePair("mealid", "" + p.x));
+			update.add(new BasicNameValuePair("vote", "" + p.y));
+			update.add(new BasicNameValuePair("date", date));
 		}
 		parser.makeHttpRequest(SUBMIT_VOTE_URL, "POST", send);
-		parser.makeHttpRequest(UPDATE_VOTE_URL,"POST",update);
+		parser.makeHttpRequest(UPDATE_VOTE_URL, "POST", update);
 		votesToSend.clear();
 		votesToUpdate.clear();
 	}
+
 	public class Vote extends AsyncTask<Void, Void, Boolean> {
 
 		@Override
@@ -354,10 +336,9 @@ public class FlikListFrag extends ListFragment implements
 		protected void onPostExecute(Boolean result) {
 			super.onPostExecute(result);
 			pDialog.dismiss();
-			//updateEventList();
+			// updateEventList();
 		}
 	}
-
 
 	class FlikArrayAdapter extends ArrayAdapter<Object> {
 		private final Context context;
@@ -388,7 +369,8 @@ public class FlikListFrag extends ListFragment implements
 						false);
 				TextView textView = (TextView) rowView
 						.findViewById(R.id.food_text_view);
-				final TextView vd = (TextView) rowView.findViewById(R.id.textView1);
+				final TextView vd = (TextView) rowView
+						.findViewById(R.id.textView1);
 				vd.setTextIsSelectable(false);
 				vd.getPaint().setAntiAlias(true);
 				vd.setTextSize(8);
@@ -403,16 +385,16 @@ public class FlikListFrag extends ListFragment implements
 				textView.setTextIsSelectable(false);
 				textView.getPaint().setAntiAlias(true);
 				rowView.getLayoutParams().height = 36;
-				if(myvotes.get(rowItem.getNumericalID())!=null){
-					if(myvotes.get(rowItem.getNumericalID()).getVote()>0){
+				if (myvotes.get(rowItem.getNumericalID()) != null) {
+					if (myvotes.get(rowItem.getNumericalID()).getVote() > 0) {
 						good.setImageResource(R.drawable.ic_action_good_green);
 					}
-					if(myvotes.get(rowItem.getNumericalID()).getVote()<0){
+					if (myvotes.get(rowItem.getNumericalID()).getVote() < 0) {
 						bad.setImageResource(R.drawable.ic_action_bad_red);
-						
+
 					}
 				}
-				
+
 				good.setOnClickListener(new OnClickListener() {
 
 					@Override
@@ -420,38 +402,38 @@ public class FlikListFrag extends ListFragment implements
 						// TODO Auto-generated method stub
 						Toast.makeText(context, "good " + position,
 								Toast.LENGTH_SHORT).show();
-						//if i havent voted up already
-						if(myvotes.get(rowItem.getNumericalID())!=null){
-							if(myvotes.get(rowItem.getNumericalID()).getVote()<0){
-								//remove old vote
-								VoteObject temp = myvotes.get(rowItem.getNumericalID());
+						// if i havent voted up already
+						if (myvotes.get(rowItem.getNumericalID()) != null) {
+							if (myvotes.get(rowItem.getNumericalID()).getVote() < 0) {
+								// remove old vote
+								VoteObject temp = myvotes.get(rowItem
+										.getNumericalID());
 								temp.setVote(1);
 								myvotes.remove(rowItem.getNumericalID());
-								myvotes.put(rowItem.getNumericalID(),temp);
-								votesToUpdate.add(new Point(rowItem.getNumericalID(),1));
+								myvotes.put(rowItem.getNumericalID(), temp);
+								votesToUpdate.add(new Point(rowItem
+										.getNumericalID(), 1));
 								good.setImageResource(R.drawable.ic_action_good_green);
 								bad.setImageResource(R.drawable.ic_action_bad);
-								int likes =Integer.parseInt( vd.getText().toString());
-								
+								int likes = Integer.parseInt(vd.getText()
+										.toString());
+
 								likes++;
 								likes++;
-								vd.setText(likes+"");
-							
-								
-								
+								vd.setText(likes + "");
+
 							}
-						}
-						else{
-							votesToSend.add(new Point(rowItem.getNumericalID(),1));
+						} else {
+							votesToSend.add(new Point(rowItem.getNumericalID(),
+									1));
 							good.setImageResource(R.drawable.ic_action_good_green);
-							int likes =Integer.parseInt( vd.getText().toString());
-							
+							int likes = Integer.parseInt(vd.getText()
+									.toString());
+
 							likes++;
-							
-							vd.setText(likes+"");
-						
-							
-							
+
+							vd.setText(likes + "");
+
 						}
 
 					}
@@ -463,34 +445,37 @@ public class FlikListFrag extends ListFragment implements
 						// TODO Auto-generated method stub
 						Toast.makeText(context, "good " + position,
 								Toast.LENGTH_SHORT).show();
-						//if i havent voted up already
-						if(myvotes.get(rowItem.getNumericalID())!=null){
-							if(myvotes.get(rowItem.getNumericalID()).getVote()>0){
-								//remove old vote
-								VoteObject temp = myvotes.get(rowItem.getNumericalID());
+						// if i havent voted up already
+						if (myvotes.get(rowItem.getNumericalID()) != null) {
+							if (myvotes.get(rowItem.getNumericalID()).getVote() > 0) {
+								// remove old vote
+								VoteObject temp = myvotes.get(rowItem
+										.getNumericalID());
 								temp.setVote(-1);
 								myvotes.remove(rowItem.getNumericalID());
-								myvotes.put(rowItem.getNumericalID(),temp);
-								votesToUpdate.add(new Point(rowItem.getNumericalID(),-1));
+								myvotes.put(rowItem.getNumericalID(), temp);
+								votesToUpdate.add(new Point(rowItem
+										.getNumericalID(), -1));
 								bad.setImageResource(R.drawable.ic_action_bad_red);
 								good.setImageResource(R.drawable.ic_action_good);
-								int likes =Integer.parseInt( vd.getText().toString());
-								
+								int likes = Integer.parseInt(vd.getText()
+										.toString());
+
 								likes--;
 								likes--;
-								vd.setText(likes+"");
-							
+								vd.setText(likes + "");
+
 							}
-						}
-						else{
-							votesToSend.add(new Point(rowItem.getNumericalID(),-1));
+						} else {
+							votesToSend.add(new Point(rowItem.getNumericalID(),
+									-1));
 							bad.setImageResource(R.drawable.ic_action_bad_red);
-							int likes =Integer.parseInt( vd.getText().toString());
-							
-							
+							int likes = Integer.parseInt(vd.getText()
+									.toString());
+
 							likes--;
-							vd.setText(likes+"");
-						
+							vd.setText(likes + "");
+
 						}
 					}
 				});
@@ -523,5 +508,5 @@ public class FlikListFrag extends ListFragment implements
 			return rowView;
 		}
 	}
-	
+
 }
