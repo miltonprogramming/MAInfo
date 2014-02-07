@@ -201,6 +201,13 @@ public class FlikListFrag extends ListFragment implements
 				for (MenuItem food : Foods) {
 					if (vobj.getMealID() == food.getNumericalID()) {
 						food.setVotes(food.getVotes() + vobj.getVote());
+						if(vobj.getVote()>=1){
+							food.setUpvotes(food.getUpvotes()+vobj.getVote());
+						}
+						if(vobj.getVote()<=-1){
+							food.setDownvotes(food.getDownvotes()+vobj.getVote());
+						}
+						
 					}
 
 				}
@@ -284,7 +291,7 @@ public class FlikListFrag extends ListFragment implements
 	@Override
 	public void onPause() {
 		super.onPause();
-		new Vote().execute();
+		//new Vote().execute();
 
 	}
 
@@ -374,7 +381,13 @@ public class FlikListFrag extends ListFragment implements
 				vd.setTextIsSelectable(false);
 				vd.getPaint().setAntiAlias(true);
 				vd.setTextSize(8);
-				vd.setText(rowItem.getVotes() + "");
+				vd.setText(rowItem.getDownvotes() + "");
+				final TextView vu = (TextView) rowView
+						.findViewById(R.id.textView2);
+				vu.setTextIsSelectable(false);
+				vu.getPaint().setAntiAlias(true);
+				vu.setTextSize(8);
+				vu.setText(rowItem.getUpvotes() + "");
 				final ImageButton good = (ImageButton) rowView
 						.findViewById(R.id.good_button);
 				final ImageButton bad = (ImageButton) rowView
@@ -400,12 +413,12 @@ public class FlikListFrag extends ListFragment implements
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
-						Toast.makeText(context, "good " + position,
-								Toast.LENGTH_SHORT).show();
+						
 						// if i havent voted up already
 						if (myvotes.get(rowItem.getNumericalID()) != null) {
 							if (myvotes.get(rowItem.getNumericalID()).getVote() < 0) {
 								// remove old vote
+							
 								VoteObject temp = myvotes.get(rowItem
 										.getNumericalID());
 								temp.setVote(1);
@@ -415,25 +428,35 @@ public class FlikListFrag extends ListFragment implements
 										.getNumericalID(), 1));
 								good.setImageResource(R.drawable.ic_action_good_green);
 								bad.setImageResource(R.drawable.ic_action_bad);
-								int likes = Integer.parseInt(vd.getText()
+								int likes = Integer.parseInt(vu.getText()
 										.toString());
 
 								likes++;
-								likes++;
-								vd.setText(likes + "");
-
+							
+								vu.setText(likes + "");
+								
+								int dislikes = Integer.parseInt(vd.getText()
+										.toString());
+								dislikes++;
+								vd.setText(dislikes+"");
+								new Vote().execute();
+								
 							}
 						} else {
+							
 							votesToSend.add(new Point(rowItem.getNumericalID(),
 									1));
+							VoteObject temp = new VoteObject(rowItem.getNumericalID(),email,1,rowItem.getDateString());
+							myvotes.put(rowItem.getNumericalID(), temp);
 							good.setImageResource(R.drawable.ic_action_good_green);
-							int likes = Integer.parseInt(vd.getText()
+							bad.setImageResource(R.drawable.ic_action_bad);
+							int likes = Integer.parseInt(vu.getText()
 									.toString());
 
 							likes++;
 
-							vd.setText(likes + "");
-
+							vu.setText(likes + "");
+							new Vote().execute();
 						}
 
 					}
@@ -443,12 +466,12 @@ public class FlikListFrag extends ListFragment implements
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
-						Toast.makeText(context, "good " + position,
-								Toast.LENGTH_SHORT).show();
+					
 						// if i havent voted up already
 						if (myvotes.get(rowItem.getNumericalID()) != null) {
 							if (myvotes.get(rowItem.getNumericalID()).getVote() > 0) {
 								// remove old vote
+								
 								VoteObject temp = myvotes.get(rowItem
 										.getNumericalID());
 								temp.setVote(-1);
@@ -458,23 +481,33 @@ public class FlikListFrag extends ListFragment implements
 										.getNumericalID(), -1));
 								bad.setImageResource(R.drawable.ic_action_bad_red);
 								good.setImageResource(R.drawable.ic_action_good);
-								int likes = Integer.parseInt(vd.getText()
+								int likes = Integer.parseInt(vu.getText()
 										.toString());
 
 								likes--;
-								likes--;
-								vd.setText(likes + "");
-
+							
+								vu.setText(likes + "");
+								
+								int dislikes = Integer.parseInt(vd.getText()
+										.toString());
+								dislikes--;
+								vd.setText(dislikes+"");
+								new Vote().execute();
 							}
 						} else {
+							
 							votesToSend.add(new Point(rowItem.getNumericalID(),
 									-1));
+							VoteObject temp = new VoteObject(rowItem.getNumericalID(),email,-1,rowItem.getDateString());
+							myvotes.put(rowItem.getNumericalID(), temp);
 							bad.setImageResource(R.drawable.ic_action_bad_red);
+							good.setImageResource(R.drawable.ic_action_good);
 							int likes = Integer.parseInt(vd.getText()
 									.toString());
 
 							likes--;
 							vd.setText(likes + "");
+							new Vote().execute();
 
 						}
 					}

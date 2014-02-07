@@ -17,6 +17,8 @@ public class MenuItem {
 	private SimpleDateFormat dateParser;
 	private boolean isHeading;
 	private int votes;
+	private int upvotes;
+	private int downvotes;
 
 	public MenuItem(boolean heading, String itemName) {
 		setHeading(heading);
@@ -30,6 +32,8 @@ public class MenuItem {
 			if (!jobj.isNull("id")) {
 				setNumericalID(Integer.parseInt(jobj.getString("id")));
 			}
+			downvotes = 0;
+			upvotes = 0;
 			/*
 			 * if (!jobj.isNull("votes")) { votes =
 			 * Integer.parseInt(jobj.getString("votes")); }
@@ -69,9 +73,9 @@ public class MenuItem {
 	public Date getItemDate() {
 		return itemDate;
 	}
-	
-	public String getDateString(){
-		return(dateParser.format(itemDate));
+
+	public String getDateString() {
+		return (dateParser.format(itemDate));
 	}
 
 	public void setItemDate(Date itemDate) {
@@ -114,7 +118,22 @@ public class MenuItem {
 		return votes;
 	}
 
+	public void setDownvotes(int downvotes) {
+		this.downvotes = downvotes;
+	}
+	public int getDownvotes() {
+		return downvotes;
+	}
+
 	public void setVotes(int votes) {
 		this.votes = votes;
 	}
+	public int getUpvotes() {
+		return upvotes;
+	}
+
+	public void setUpvotes(int upvotes) {
+		this.upvotes = upvotes;
+	}
+	
 }

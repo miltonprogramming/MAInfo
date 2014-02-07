@@ -15,6 +15,21 @@ public class VoteObject {
 	private int vote;
 	private String date;
 	
+	public VoteObject(int numericalID, int mealID, String email, int vote, String date){
+		this.numericalID=numericalID;
+		this.mealID = mealID;
+		this.email = email;
+		this.vote = vote;
+		this.date = date;
+	}
+	public VoteObject( int mealID, String email, int vote, String date){
+		numericalID = 0;
+		this.mealID = mealID;
+		this.email = email;
+		this.vote = vote;
+		this.date = date;
+	}
+	
 	public VoteObject(JSONObject jobj) {
 
 		try {
