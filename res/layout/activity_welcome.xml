@@ -10,7 +10,7 @@
     android:label="" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/ApacheTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -25,7 +25,7 @@
         android:id="@+id/welcome_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/ApacheTextView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="62dp"
         android:ems="10"

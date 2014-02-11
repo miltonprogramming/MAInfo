@@ -37,13 +37,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/textView1"
+        android:layout_alignRight="@+id/ApacheTextView"
         android:background="@color/white"
         android:contentDescription="@string/thumbs_down"
         android:src="@drawable/ic_action_bad" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/ApacheTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

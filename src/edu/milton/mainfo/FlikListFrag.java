@@ -377,7 +377,7 @@ public class FlikListFrag extends ListFragment implements
 				TextView textView = (TextView) rowView
 						.findViewById(R.id.food_text_view);
 				final TextView vd = (TextView) rowView
-						.findViewById(R.id.textView1);
+						.findViewById(R.id.ApacheTextView);
 				vd.setTextIsSelectable(false);
 				vd.getPaint().setAntiAlias(true);
 				vd.setTextSize(8);
@@ -522,7 +522,7 @@ public class FlikListFrag extends ListFragment implements
 				textView.setText(rowItem.getItemName());
 				textView.setTextSize(18);
 				textView.getPaint().setAntiAlias(true);
-				TextView vd = (TextView) rowView.findViewById(R.id.textView1);
+				TextView vd = (TextView) rowView.findViewById(R.id.ApacheTextView);
 				ImageButton good = (ImageButton) rowView
 						.findViewById(R.id.good_button);
 				ImageButton bad = (ImageButton) rowView

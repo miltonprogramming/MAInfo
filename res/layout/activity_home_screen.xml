@@ -14,8 +14,8 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView1"
-        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignBaseline="@+id/ApacheTextView"
+        android:layout_alignBottom="@+id/ApacheTextView"
         android:layout_alignLeft="@+id/saa_button"
         android:layout_alignRight="@+id/saa_button"
         android:gravity="center"
@@ -23,7 +23,7 @@
         android:textSize="30sp" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/ApacheTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/flik_button"
