@@ -93,15 +93,17 @@ public class FlikListFrag extends ListFragment implements
 		myvotes = new HashMap<Integer, VoteObject>();
 		votesToUpdate = new ArrayList<Point>();
 
+		//Lunch
 		// get Entrees
 		try {
 
 			JSONParser jParserEntrees = new JSONParser();
 			JSONObject jsonEntrees = jParserEntrees
 					.getJSONFromUrl(READ_EVENTS_URL + "?type=Entree&date="
-							+ date);
+							+ date+"&time=Lunch");
 
 			retrievedEntrees = jsonEntrees.getJSONArray("Entree");
+			Foods.add(new MenuItem(true, "Lunch"));
 			Foods.add(new MenuItem(true, "Entrees"));
 			for (int i = 0; i < retrievedEntrees.length(); i++) {
 				JSONObject c = retrievedEntrees.getJSONObject(i);
@@ -117,7 +119,7 @@ public class FlikListFrag extends ListFragment implements
 		try {
 			JSONParser jParserSides = new JSONParser();
 			JSONObject jsonSides = jParserSides.getJSONFromUrl(READ_EVENTS_URL
-					+ "?type=Side&date=" + date);
+					+ "?type=Side&date=" + date+"&time=Lunch");
 
 				retrievedSides = jsonSides.getJSONArray("Side");
 				Foods.add(new MenuItem(true, "Sides"));
@@ -134,7 +136,7 @@ public class FlikListFrag extends ListFragment implements
 			JSONParser jParserFlikLive = new JSONParser();
 			JSONObject jsonFlikLive = jParserFlikLive
 					.getJSONFromUrl(READ_EVENTS_URL + "?type=Flik+Live&date="
-							+ date);
+							+ date+"&time=Lunch");
 
 
 				retrievedFlikLive = jsonFlikLive.getJSONArray("Flik Live");
@@ -153,7 +155,7 @@ public class FlikListFrag extends ListFragment implements
 			JSONParser jParserDessert = new JSONParser();
 			JSONObject jsonDessert = jParserDessert
 					.getJSONFromUrl(READ_EVENTS_URL + "?type=Dessert&date="
-							+ date);
+							+ date+"&time=Lunch");
 
 
 				retrievedDesserts = jsonDessert.getJSONArray("Dessert");
@@ -170,7 +172,7 @@ public class FlikListFrag extends ListFragment implements
 		try {
 			JSONParser jParserSoups = new JSONParser();
 			JSONObject jsonSoups = jParserSoups.getJSONFromUrl(READ_EVENTS_URL
-					+ "?type=Soup&date=" + date);
+					+ "?type=Soup&date=" + date+"&time=Lunch");
 
 
 				retrievedSoups = jsonSoups.getJSONArray("Soup");
@@ -183,7 +185,103 @@ public class FlikListFrag extends ListFragment implements
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+		
+		
+		//Dinner
+		// get Entrees
+		try {
 
+			JSONParser jParserEntrees = new JSONParser();
+			JSONObject jsonEntrees = jParserEntrees
+					.getJSONFromUrl(READ_EVENTS_URL + "?type=Entree&date="
+							+ date+"&time=Dinner");
+
+			retrievedEntrees = jsonEntrees.getJSONArray("Entree");
+			Foods.add(new MenuItem(true, "Dinner"));
+			Foods.add(new MenuItem(true, "Entrees"));
+			for (int i = 0; i < retrievedEntrees.length(); i++) {
+				JSONObject c = retrievedEntrees.getJSONObject(i);
+				// System.out.println(c);
+				Foods.add(new MenuItem(false, c));
+			}
+
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		// get Sides
+		try {
+			JSONParser jParserSides = new JSONParser();
+			JSONObject jsonSides = jParserSides.getJSONFromUrl(READ_EVENTS_URL
+					+ "?type=Side&date=" + date+"&time=Dinner");
+
+				retrievedSides = jsonSides.getJSONArray("Side");
+				Foods.add(new MenuItem(true, "Sides"));
+				for (int i = 0; i < retrievedSides.length(); i++) {
+					JSONObject c = retrievedSides.getJSONObject(i);
+					// System.out.println(c);
+					Foods.add(new MenuItem(false, c));
+				}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		// get Flik Live
+		try {
+			JSONParser jParserFlikLive = new JSONParser();
+			JSONObject jsonFlikLive = jParserFlikLive
+					.getJSONFromUrl(READ_EVENTS_URL + "?type=Flik+Live&date="
+							+ date+"&time=Dinner");
+
+
+				retrievedFlikLive = jsonFlikLive.getJSONArray("Flik Live");
+				Foods.add(new MenuItem(true, "Flik Live"));
+				for (int i = 0; i < retrievedFlikLive.length(); i++) {
+					JSONObject c = retrievedFlikLive.getJSONObject(i);
+					// System.out.println(c);
+					Foods.add(new MenuItem(false, c));
+				}
+
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		// get Dessert
+		try {
+			JSONParser jParserDessert = new JSONParser();
+			JSONObject jsonDessert = jParserDessert
+					.getJSONFromUrl(READ_EVENTS_URL + "?type=Dessert&date="
+							+ date+"&time=Dinner");
+
+
+				retrievedDesserts = jsonDessert.getJSONArray("Dessert");
+				Foods.add(new MenuItem(true, "Desserts"));
+				for (int i = 0; i < retrievedDesserts.length(); i++) {
+					JSONObject c = retrievedDesserts.getJSONObject(i);
+					// System.out.println(c);
+					Foods.add(new MenuItem(false, c));
+				}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		// get Soup
+		try {
+			JSONParser jParserSoups = new JSONParser();
+			JSONObject jsonSoups = jParserSoups.getJSONFromUrl(READ_EVENTS_URL
+					+ "?type=Soup&date=" + date+"&time=Dinner");
+
+
+				retrievedSoups = jsonSoups.getJSONArray("Soup");
+				Foods.add(new MenuItem(true, "Soups"));
+				for (int i = 0; i < retrievedSoups.length(); i++) {
+					JSONObject c = retrievedSoups.getJSONObject(i);
+					// System.out.println(c);
+					Foods.add(new MenuItem(false, c));
+				}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
 		// get all votes
 		try {
 			JSONParser jParserVotes = new JSONParser();
