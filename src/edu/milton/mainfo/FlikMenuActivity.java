@@ -4,9 +4,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
+import edu.milton.mainfo.Welcome.Reset;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -22,7 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 @SuppressLint("SimpleDateFormat")
-public class FlikMenuActivity extends FragmentActivity {
+public class FlikMenuActivity extends FragmentActivity implements AllergenWarning.NoticeDialogListener {
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -59,6 +62,7 @@ public class FlikMenuActivity extends FragmentActivity {
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 		//Log.d("this is the email", email);
+		showNoticeDialog();
 
 	}
 
@@ -155,5 +159,15 @@ public class FlikMenuActivity extends FragmentActivity {
 			return rootView;
 		}
 	}
+	
+	public void showNoticeDialog() {
+        // Create an instance of the dialog fragment and show it
+        DialogFragment dialog = new AllergenWarning();
+        dialog.show(getSupportFragmentManager(), "Allergen Warning");
+    }
+	
+	public void onDialogPositiveClick(DialogFragment dialog) {
+        dialog.dismiss();
+    }
 
 }
