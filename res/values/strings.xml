@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MAInfo</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="mainScreenTitle">Milton Academy</string>
+    <string name="action_back">Back</string>
+    <string name="blank_string"></string>
+    <string name="title_activity_tabs_test">Flik Menu</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="placeholder_string">[placeholder]</string>
+    <string name="long_placeholder">This string is very long. It might even have to be two lines long. That would be ok though.</string>
+    <string name="thumbs_up">Thumbs Up!</string>
+    <string name="thumbs_down">Thumbs Down!</string>
+    <string name="desc_comment">Leave a comment...</string>
+    <string name="altview">This is simply an alternative view</string>
+    <string name="title_activity_saaschedule">SAA Schedule</string>
+    <string name="event_description_placeholder">This is an event discription, and as such, is likely to be quite long. Wow! Such longness! So many multiple word sentences, likely requiring smooth handling of line breaking and content wrapping and all the other things that android will do for us, right?</string>
+	
+    <string name="flik">FLIK</string>
+    <string name="saa">SAA</string>
+    <string name="settings">Settings</string>
+    <string name="title_activity_signup">Signup</string>
+    <string name="title_activity_maapp">MA App</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_welcome">Welcome</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="signing_in">Signing in</string>
+    <string name="password_reset">Password Reset</string>
+    <string name="submit">Submit</string>
+    <string name="goToLogin">Go to Login</string>
+    <string name="go_to_register">Go to Register</string>
+    <string name="logout">Logout</string>
+</resources>
