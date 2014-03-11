@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6CB052BE18CF94890058D212 /* Storyboard_Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6CB052BD18CF94890058D212 /* Storyboard_Main.storyboard */; };
 		6CF1570518CF933F00EE7CC9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CF1570418CF933F00EE7CC9 /* Foundation.framework */; };
 		6CF1570718CF933F00EE7CC9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CF1570618CF933F00EE7CC9 /* CoreGraphics.framework */; };
 		6CF1570918CF933F00EE7CC9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CF1570818CF933F00EE7CC9 /* UIKit.framework */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6CB052BD18CF94890058D212 /* Storyboard_Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard_Main.storyboard; sourceTree = "<group>"; };
 		6CF1570118CF933F00EE7CC9 /* MAInfo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MAInfo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CF1570418CF933F00EE7CC9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6CF1570618CF933F00EE7CC9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -117,6 +119,7 @@
 			children = (
 				6CF1571518CF933F00EE7CC9 /* MAIAppDelegate.h */,
 				6CF1571618CF933F00EE7CC9 /* MAIAppDelegate.m */,
+				6CB052BD18CF94890058D212 /* Storyboard_Main.storyboard */,
 				6CF1571B18CF933F00EE7CC9 /* Images.xcassets */,
 				6CF1571818CF933F00EE7CC9 /* MAInfo.xcdatamodeld */,
 				6CF1570D18CF933F00EE7CC9 /* Supporting Files */,
@@ -230,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6CF1571118CF933F00EE7CC9 /* InfoPlist.strings in Resources */,
+				6CB052BE18CF94890058D212 /* Storyboard_Main.storyboard in Resources */,
 				6CF1571C18CF933F00EE7CC9 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,6 +458,7 @@
 				6CF1573518CF933F00EE7CC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6CF1573618CF933F00EE7CC9 /* Build configuration list for PBXNativeTarget "MAInfoTests" */ = {
 			isa = XCConfigurationList;
@@ -462,6 +467,7 @@
 				6CF1573818CF933F00EE7CC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
